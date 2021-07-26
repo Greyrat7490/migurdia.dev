@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
-import Navbar from '../components/Navbar.jsx'
-import SlimeBG from '../components/Slime-BG.jsx'
+import SlimeBG from '../../components/Slime-BG.jsx';
+import Navbar from '../../components/Navbar.jsx';
 
 const Container = styled.div`
   & {
     display: grid;
-    margin-left: 25vw;
-    margin-top: 25vh;
+    margin-left: 20vw;
+    margin-top: 15vh;
     font-size: 40px;
   }
 
@@ -17,19 +17,13 @@ const Container = styled.div`
     font-weight: 100;
     text-transform: uppercase;
   }
-
-  .icon {
-    margin-left: -150px;
-    margin-bottom: -40px;
-    filter: drop-shadow( 2px 8px 15px rgba( 0, 0, 0, .25 ) );
-  }
 `
 
-export default function index() {
+export default function greychain() {
     return (
         <>
             <Head>
-                <title> Tempest-Service </title>
+                <title> GreyChain </title>
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="apple-touch-icon" sizes="180x180" href="static/favicons/apple-touch-icon.png" />
@@ -43,19 +37,19 @@ export default function index() {
                 <link href="https://fonts.googleapis.com/css?family=Rubik|Fira+Sans|Open+Sans|Noto+Sans|Oxygen|Nunito|Roboto&display=swap" rel="stylesheet" />
             </Head>
 
-            <SlimeBG />
             <Navbar />
+            <SlimeBG />
             <Container>
-                <h1> 
-                  <img className="icon" src="static/icon.svg" width="150px" height="150px" />
-                  Tempest-Dev
-                </h1>
+                <h1> GreyChain </h1>
+                Blockchain Project written in C++.<br/>
+                The future of the financesystem are definitly Blockchains.<br/>
+                They provide a secure, decentralized and fast way to transfer money.
                 <p>
-                    This is some text to be there.<br />
-                    More text and more letters.
+                  Blockchains are a extremly complex topic, but are also really interesting.<br/>
+                  Therefore I decided to try to make my own one for educational reasons.
                 </p>
             </Container>
-
         </>
     );
 }
+

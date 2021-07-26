@@ -17,6 +17,16 @@ const Container = styled.div`
     font-weight: 100;
     text-transform: uppercase;
   }
+
+  & a {
+    text-decoration: none;
+    color: #fff;
+    text-shadow: 0px 0px 30px black;
+  }
+
+  & ul {
+    list-style: none;
+  }
 `
 
 export default function index() {
@@ -41,6 +51,11 @@ export default function index() {
             <SlimeBG />
             <Container>
                 <h1> Projects </h1>
+                <ul>
+                  <li><a href="/projects/haiirOS"> HaiirOS </a></li>
+                  <li><a href="/projects/tempest-engine"> Tempest-Engine </a></li>
+                  <li><a href="/projects/greychain"> GreyChain </a></li>
+                </ul>
             </Container>
         </>
     );

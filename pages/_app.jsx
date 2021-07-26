@@ -7,12 +7,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Rubik', 'Roboto' ,'Open Sans', 'fira sans';
     color: #fff;
   }
-
-  .icon {
-    margin-left: -150px;
-    margin-bottom: -40px;
-    filter: drop-shadow( 2px 8px 15px rgba( 0, 0, 0, .25 ) );
-  }
 `
 
 const theme = {
