@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
-import SlimeBG from '../../components/Slime-BG.jsx';
-import Navbar from '../../components/Navbar.jsx';
+import Navbar from '../components/Navbar.jsx'
+import SlimeBG from '../components/Slime-BG.jsx'
 
 const Container = styled.div`
   & {
     display: grid;
     margin-left: 25vw;
-    margin-top: 25vh;
+    margin-top: 20vh;
     font-size: 40px;
   }
 
@@ -18,18 +18,10 @@ const Container = styled.div`
     text-transform: uppercase;
   }
 
-  & a {
-    color: #fff;
-    text-shadow: 0px 0px 0px black;
-    transition: text-shadow 300ms;
-  }
-
-  & a:hover {
-    text-shadow: 0px 0px 30px black;
-  }
-
-  & ul {
-    list-style: none;
+  .icon {
+    margin-left: -150px;
+    margin-bottom: -40px;
+    filter: drop-shadow( 2px 8px 15px rgba( 0, 0, 0, .25 ) );
   }
 `
 
@@ -37,7 +29,7 @@ export default function index() {
     return (
         <>
             <Head>
-                <title> Projects </title>
+                <title> About me </title>
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="apple-touch-icon" sizes="180x180" href="static/favicons/apple-touch-icon.png" />
@@ -51,15 +43,12 @@ export default function index() {
                 <link href="https://fonts.googleapis.com/css?family=Rubik|Fira+Sans|Open+Sans|Noto+Sans|Oxygen|Nunito|Roboto&display=swap" rel="stylesheet" />
             </Head>
 
-            <Navbar />
             <SlimeBG />
+            <Navbar />
             <Container>
-                <h1> Projects </h1>
-                <ul>
-                  <li><a href="/projects/haiirOS"> HaiirOS </a></li>
-                  <li><a href="/projects/tempest-engine"> Tempest-Engine </a></li>
-                  <li><a href="/projects/greychain"> GreyChain </a></li>
-                </ul>
+                <h1>
+                    About me
+                </h1>
             </Container>
         </>
     );

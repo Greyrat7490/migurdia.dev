@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
-import SlimeBG from '../../components/Slime-BG.jsx';
-import Navbar from '../../components/Navbar.jsx';
+import Navbar from '../../components/Navbar.jsx'
+import SlimeBG from '../../components/Slime-BG.jsx'
 
 const Container = styled.div`
   & {
     display: grid;
     margin-left: 25vw;
-    margin-top: 25vh;
+    margin-top: 15vh;
     font-size: 40px;
   }
 
@@ -16,20 +16,7 @@ const Container = styled.div`
     font-size: 70px;
     font-weight: 100;
     text-transform: uppercase;
-  }
-
-  & a {
-    color: #fff;
-    text-shadow: 0px 0px 0px black;
-    transition: text-shadow 300ms;
-  }
-
-  & a:hover {
-    text-shadow: 0px 0px 30px black;
-  }
-
-  & ul {
-    list-style: none;
+    margin-bottom: 0px;
   }
 `
 
@@ -37,7 +24,7 @@ export default function index() {
     return (
         <>
             <Head>
-                <title> Projects </title>
+                <title> Documentations </title>
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="apple-touch-icon" sizes="180x180" href="static/favicons/apple-touch-icon.png" />
@@ -51,14 +38,19 @@ export default function index() {
                 <link href="https://fonts.googleapis.com/css?family=Rubik|Fira+Sans|Open+Sans|Noto+Sans|Oxygen|Nunito|Roboto&display=swap" rel="stylesheet" />
             </Head>
 
-            <Navbar />
             <SlimeBG />
+            <Navbar />
             <Container>
-                <h1> Projects </h1>
+                <h1> Documentations </h1>
                 <ul>
-                  <li><a href="/projects/haiirOS"> HaiirOS </a></li>
-                  <li><a href="/projects/tempest-engine"> Tempest-Engine </a></li>
-                  <li><a href="/projects/greychain"> GreyChain </a></li>
+                    <li><a href="/doc/kernel"> Kernel(OS) </a></li>
+                    <li><a href="/doc/physics"> Physics </a></li>
+                    <li><a href="/doc/blockchain"> Blockchains </a></li><br/>
+
+                    <li><a href="/doc/c"> C </a></li>
+                    <li><a href="/doc/cpp"> C++ </a></li>
+                    <li><a href="/doc/haskell"> Haskell </a></li>
+                    <li><a href="/doc/func-vs-imp"> functional vs imperative </a></li>
                 </ul>
             </Container>
         </>
