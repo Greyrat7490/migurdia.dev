@@ -2,11 +2,16 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import Head from 'next/head'
 
 const GlobalStyle = createGlobalStyle`
+    :root {
+        font-family: 'Rubik', 'fira sans';
+        font-size: 20px;
+    }
+
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', 'fira sans';
     color: #fff;
+    background-color: #E1DDDC;
   }
 `
 

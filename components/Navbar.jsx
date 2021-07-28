@@ -4,9 +4,9 @@ import styled from 'styled-components'
 const StyledNav = styled.nav`
     & {
         position: fixed;
-        top: 10px;
+        top: 0.55rem;
         text-decoration: none;
-    }    
+    }
 
     & ul {
         list-style: none;
@@ -18,23 +18,25 @@ const StyledNav = styled.nav`
     }
     
     & a {
-        font-size: 20px;
+        font-size: 1rem;
         text-decoration: none;
         text-shadow: 0px 0px 20px black;
         color: #fff;
     }
     
-    & li a::after {
+    & li a::before {
         content: '';
         display: block;
-        height: 5px;
+        height: 0.18rem;
         background-color: #fff;
-        width: 0%;
-        transition: all ease-in-out 250ms;
+        border-radius: 0.18rem;
+        width: 60%;
+        transition: transform ease-in-out 350ms, width ease-in-out 450ms;
     }
     
-    & a:hover::after {
-        width: 100%;
+    & a:hover::before {
+        transform: translateX(250%);
+        width: 0px;
     }
 `
 
@@ -51,6 +53,3 @@ export default function Navbar() {
         </StyledNav>
     );
 }
-
-
-

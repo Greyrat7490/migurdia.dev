@@ -17,12 +17,6 @@ const Container = styled.div`
     font-weight: 100;
     text-transform: uppercase;
   }
-
-  .icon {
-    margin-left: -150px;
-    margin-bottom: -40px;
-    filter: drop-shadow( 2px 8px 15px rgba( 0, 0, 0, .25 ) );
-  }
 `
 
 export default function index() {
