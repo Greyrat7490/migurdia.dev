@@ -31,7 +31,7 @@ export default function haiirOS() {
 			<Container>
 				<h1> HaiirOS </h1>
 				Kernel Project written in C.<br />
-				Main purpose is to learn C, Assambly-x86 and how Kernels work.
+				Main purpose is to learn C, Assembly-x86 and how Kernels work.
 				<p>
 					Main resources used are <a href="wiki.osdev.org">OS-dev</a> and some pages
 					from Wikipedia<br /> for more theory about some topics.
