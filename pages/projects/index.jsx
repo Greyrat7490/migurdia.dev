@@ -13,7 +13,7 @@ const StyledMain = styled.main`
 	font-size: 1.5rem;
   }
 
-  & h1 {
+  & > h1 {
 	margin-left: 15vw;
 	margin-top: 17vh;
 	margin-bottom: 0;
@@ -67,7 +67,7 @@ const Container = styled.li`
 	.thumbnailDiv {
 		width: 100%;
 		height: 100%;
-		filter: drop-shadow( 0 0 1rem rgba( 0, 0, 0, 0.5 ) );
+		filter: drop-shadow( 0 0 1rem rgba( 0, 0, 0, 0.9 ) );
 		transition: all ease-in-out 350ms
 	}
 
