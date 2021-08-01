@@ -37,7 +37,51 @@ const Terminal = styled.div`
     }
 
     .text {
+        list-style: none;
+        padding: 0.4rem;
         font-size: 0.5em;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    li:first-child {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        animation: line1 5s steps(90, end) infinite;
+    }
+
+
+    li:nth-child(2) {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        animation: line2 5s steps(90, end) infinite;
+    }
+ 
+    @keyframes line1 {
+        0% { 
+            width: 0;
+        }
+
+        20%, 40% {
+            width: 4rem;
+        }
+
+        60%, 80% {
+            width: 40%;
+        }
+        
+        100% {
+            width: 100%;
+        }        
+    }
+
+    @keyframes line2 {
+        0%, 20% { 
+            width: 0;
+        }
     }
 `
 
@@ -51,9 +95,10 @@ export default function HaiirOSThumbnail() {
                     <li>View</li>
                 </ul>   
             </Bar>
-            <div className="text">
-                booting...
-            </div>
+            <ul className="text">
+                <li>booting...</li>
+                <li>Welcome to HaiirOS!</li>
+            </ul>
         </Terminal>
     );
 }

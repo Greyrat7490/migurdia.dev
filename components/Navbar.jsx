@@ -42,7 +42,7 @@ const StyledNav = styled.nav`
 
 export default function Navbar() {
     return (
-        <StyledNav>
+        <StyledNav className="navbar">
             <ul>
                 <li> <a href="/"> Home </a> </li>
                 <li> <a href="/projects"> Projects </a> </li>
