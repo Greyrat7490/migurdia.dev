@@ -32,7 +32,7 @@ export default function index() {
                 <h1>Contact</h1>
                 <ul>
                     <li> Email: kevinschaperjahn13@gmail.com </li>
-                    <li><a href="https://github.com/Tempest7490"> My Github profile </a></li>
+                    <li><a href="https://github.com/Greyrat7490"> My Github profile </a></li>
                 </ul>
             </Container>
         </>
