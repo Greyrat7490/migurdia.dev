@@ -1,4 +1,9 @@
 [proxy]
-  enabled = true
-  app_port = 8080
-  proxy_port = 8081
+enabled = true
+app_port = 8080
+proxy_port = 8081
+
+[build]
+include_ext = ["go", "tmpl", "css"]
+exclude_dir = [".git", "tmp"]
+poll = true # otherwise css changes won't be detected
