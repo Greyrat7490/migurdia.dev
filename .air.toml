@@ -1,0 +1,4 @@
+[proxy]
+  enabled = true
+  app_port = 8080
+  proxy_port = 8081

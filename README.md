@@ -2,25 +2,29 @@
  
 https://migurdia.dev
 
+## Site is still in work ...
 
-### Todo:
+## Run locally with hot reloading
 
-- Style for links
-- Doc page layout/design
-- 
+* install air for hot reloading
+```bash
+go install github.com/air-verse/air@latest
+```
 
----
+* start server in debug mode
+```bash
+go run . -d
+```
+* server will run on port 8080
 
-- add some more info about my projects
+* start server with hot reloading
+```bash
+air -- -d
+```
+* on port 8081 is the air proxy for hot reloading your browser on changes
 
-- write simple doc for:
-  - Kernel
-  - Physics
-  - Blockchains
-  ---
-  - C
-  - C++
-  - Haskell
-  - functional vs imperative
-
-- put something in About me
+## Start in production mode
+* server with Let's Encrypt SSL gets started
+```bash
+go run .
+```
