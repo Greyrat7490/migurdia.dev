@@ -2,76 +2,70 @@ package main
 
 import (
 	"context"
-	"flag"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+	"migurdia.dev/pages"
 
-	"github.com/gin-gonic/gin"
+	"github.com/a-h/templ"
+	"github.com/labstack/echo/v4"
 )
 
 var db = make(map[string]string)
 
-func pingHandler(c *gin.Context) {
-	c.String(http.StatusOK, "pong")
+func pingHandler(c echo.Context) error {
+	return c.String(http.StatusOK, "pong")
 }
 
-func userHandler(c *gin.Context) {
-	user := c.Params.ByName("name")
+func userHandler(c echo.Context) error {
+	type userData struct {
+		User string
+		Value string
+	}
+
+	user := c.QueryParams().Get("name")
 	value, ok := db[user]
 	if ok {
-		c.JSON(http.StatusOK, gin.H{"user": user, "value": value})
+		c.JSON(http.StatusOK, userData{ user, value })
 	} else {
-		c.JSON(http.StatusOK, gin.H{"user": user, "status": "no value"})
+		c.JSON(http.StatusOK, userData{ user, "no value" })
 	}
+	return nil
 }
 
-func indexHandler(c *gin.Context) {
-	type indexData struct {
-		Title string
-	}
-
-	c.HTML(http.StatusOK, "index.tmpl", indexData{ "My page", })
+func indexHandler(c echo.Context) error {
+	return Render(c, http.StatusOK, pages.Index("something"))
 }
 
-func usersHandler(c *gin.Context) {
-	users := make([]string, len(db))
+func usersHandler(c echo.Context) error {
+	users := make([]string, 0, len(db))
 	for user := range db {
 		users = append(users, user)
 	}
 
-	c.HTML(http.StatusOK, "users.tmpl", struct { 
-		Users []string
-	}{
-		users,
-	})
+	return Render(c, http.StatusOK, pages.Users(users))
 }
 
-func setupServer() *http.Server {
-	router := gin.Default()
+func setupServer() *echo.Echo {
+	e := echo.New()
 
-	router.SetTrustedProxies([]string{"127.0.0.1/8"})
-	router.LoadHTMLGlob("templates/**/*")
-	router.Static("/assets", "./assets")
+	e.Static("/assets", "./assets")
 
-	router.GET("/", indexHandler)
-	router.GET("/users", usersHandler)
+	e.GET("/", indexHandler)
+	e.GET("/users", usersHandler)
 
-	router.GET("/api/ping", pingHandler)
-	router.GET("/api/user/:name", userHandler)
-
-	return &http.Server{
-		Addr:    ":8080",
-		Handler: router.Handler(),
-	}
+	e.GET("/api/ping", pingHandler)
+	e.GET("/api/user/:name", userHandler)
+	
+	return e
 }
 
-func startServer(srv *http.Server) {
+func startServer(e *echo.Echo) {
 	go func() {
-		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		if err := e.Start(":8080"); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("listen: %s\n", err)
 		}
 	}()
@@ -83,12 +77,12 @@ func catchShutdown() {
 	<-quit
 }
 
-func gracefullyShutdown(srv *http.Server) {
+func gracefullyShutdown(e *echo.Echo) {
 	log.Println("Shuting down Server...")
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-	if err := srv.Shutdown(ctx); err != nil {
+	if err := e.Shutdown(ctx); err != nil {
 		log.Println("Server Shutdown error:", err)
 	}
 	<-ctx.Done()
@@ -100,16 +94,22 @@ func main() {
 	db["user1"] = "passwd"
 	db["user2"] = "passwd2"
 
-	debugMode := flag.Bool("d", false, "debug mode")
-    flag.Parse()
-	if !*debugMode {
-		gin.SetMode(gin.ReleaseMode)
-	}
-
-	srv := setupServer()
-	startServer(srv)
+	e := setupServer()
+	startServer(e)
 	catchShutdown()
-	gracefullyShutdown(srv)
+	gracefullyShutdown(e)
 
 	log.Println("Server shutdown gracefully")
 }
+
+func Render(ctx echo.Context, statusCode int, t templ.Component) error {
+	buf := templ.GetBuffer()
+	defer templ.ReleaseBuffer(buf)
+
+	if err := t.Render(ctx.Request().Context(), buf); err != nil {
+		return err
+	}
+
+	return ctx.HTML(statusCode, buf.String())
+}
+

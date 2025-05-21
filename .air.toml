@@ -4,6 +4,9 @@ app_port = 8080
 proxy_port = 8081
 
 [build]
-include_ext = ["go", "tmpl", "css"]
+pre_cmd = ["templ generate"] 
+exclude_regex = [".*_templ.go"]
+include_ext = ["go", "templ", "css"]
 exclude_dir = [".git", "tmp"]
 poll = true # otherwise css changes won't be detected
+
