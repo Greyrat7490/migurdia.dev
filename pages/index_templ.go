@@ -29,20 +29,7 @@ func Index(name string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>Migurdia-Dev</title><link href=\"/assets/index_styles.css\" rel=\"stylesheet\"><link href=\"https://fonts.googleapis.com/css2?family=Rubik:wght@400&amp;display=swap\" rel=\"stylesheet\"></head><body><nav class=\"navbar\"><a href=\"\">Home</a> <a href=\"\">Stuff</a> <a href=\"\">More Stuff</a> <a href=\"\">Deez</a></nav><div><h1>MIGURDIA-DEV</h1>Portfolio page of Greyrat7490 ")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(name)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index.templ`, Line: 23, Col: 22}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div></body><script src=\"/assets/app.js\"> </script></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>Migurdia-Dev</title><link href=\"/assets/index_styles.css\" rel=\"stylesheet\"><link href=\"https://fonts.googleapis.com/css2?family=Rubik:wght@400&amp;display=swap\" rel=\"stylesheet\"></head><body><svg class=\"sidedeco\" viewBox=\"0 0 1920 1080\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"none\"><path d=\"M1920 756C1866 626 1811.8 496 1727.8 463.8C1644 431.6 1530 497.2 1435 485C1339.8 473 1263.6 383.2 1221.6 289.4C1179.6 195.6 1171.8 97.8 1164 0H1920V756Z\" fill=\"#BC96DA\"></path> <path d=\"M0 324C89.2 345.2 178.2 366.4 284 394.4C389.6 422.6 511.8 457.4 534.6 545.4C557.2 633.4 480.4 774.6 500.8 872.6C521 970.6 638.6 1025.2 756 1080H0V324Z\" fill=\"#BC96DA\"></path></svg><nav class=\"navbar\"><ul><li><a href=\"\">Home</a> <img src=\"/assets/slime.svg\"></li><li><a href=\"\">Stuff</a> <img src=\"/assets/slime.svg\"></li><li><a href=\"\">More Stuff</a> <img src=\"/assets/slime.svg\"></li><li><a href=\"\">Deez</a> <img src=\"/assets/slime.svg\"></li></ul></nav><div class=\"rotatable\"><h1>MIGURDIA-DEV</h1><p>Portfolio page of Greyrat7490</p></div></body><script src=\"/assets/app.js\"> </script></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
