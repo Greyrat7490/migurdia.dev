@@ -2,23 +2,17 @@
     --main_bg_color: #282A36;
     --accent_color1: #BC96DA;
     --main_font_color: #F8F8F2;
+    --accent_color2: #8BE9FD;
+    --shadow_color: rgba(0, 0, 0, 0.5);
 
     font-family: 'Rubik', 'fira sans';
     font-size: 50px;
     color: var(--main_font_color);
 }
 
-nav {
-    display: inline-block;
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-}
-
-nav a {
-    padding: 0 1rem;
-    text-decoration: none;
-    color: var(--main_font_color);
+.rotatable {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
 }
 
 body {
@@ -29,8 +23,77 @@ body {
     flex-direction: column;
     height: 100vh; 
     width: 100vw; 
-    background-image: url(/assets/index_bg.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: var(--main_bg_color);
+    perspective: 10000px;
+}
+
+body :not(svg) {
+    filter: drop-shadow(13px 8px 7px var(--shadow_color));
+}
+
+nav {
+    display: inline-block;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+nav a {
+    z-index: 2;
+    position: relative;
+    text-decoration: none;
+    color: var(--main_font_color);
+}
+nav a::after {
+    z-index: 0;
+    content: '';
+    display: block;
+    margin-left: -10%;
+    width: 120%;
+    height: 0.15rem;
+    border-radius: 100px;
+    background-color: var(--main_font_color);
+    transition: background-color ease-in-out 250ms;
+}
+
+nav img {
+    z-index: 1;
+    margin-top: -5px;
+    position: absolute;
+    transform: scaleY(0%);
+    width: 100%;
+    transform-origin: top;
+    transition: transform cubic-bezier(0.68, 0, 0.265, 1.95) 250ms;
+}
+
+nav a:hover + img {
+    transform: scaleY(100%);
+}
+
+nav a:hover::after {
+    background-color: var(--accent_color2);
+}
+
+.sidedeco {
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sidedeco :nth-child(1) {
+    filter: drop-shadow(-40px 40px 21px var(--shadow_color));
+}
+
+.sidedeco :nth-child(2) {
+    filter: drop-shadow(40px -40px 21px var(--shadow_color));
 }
